@@ -25,7 +25,6 @@ else
   wget https://dl.min.io/client/mc/release/linux-amd64/mc > /dev/null
   chmod +x mc
 fi
-
 echo "Configuring alias for minio cluster"
 ./mc alias set myminio http://${host} AKIAIOSFODNN7EXAMPLE wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY
 echo "Copying the objects to bucket"
@@ -37,11 +36,13 @@ echo "Copying the objects to bucket"
 #fi
 
 dir=$(find . -type d -name "*")
-echo $dir
-
 for d in $dir
 do
   dir_name=$(echo $d | sed "s/^./${PWD##*/}/g")
   echo $dir_name
-
+  file_name=$(find $d -type f -name "*")
+#  for f in $file_name
+#  do
+#  echo ${f:2}
+#  done
 done
